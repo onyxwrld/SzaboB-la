@@ -24,12 +24,49 @@ function lefutFuggveny()
     gomb.appendChild(darabGomb);
     osszGomb.addEventListener('click',osszidezet);
     theGomb.addEventListener('click',theFeladat);
-    hosszGomb.addEventListener('click',theFeladat);
-    theGomb.addEventListener('click',theFeladat);
+    hosszGomb.addEventListener('click',hosszGombFuggveny);
+    darabGomb.addEventListener('click',darabFuggveny);
 }
 function theFeladat()
 {
+    const stringtomb = theFeladat2.map(a=>{
+        if(a.quote.includes('the '))
+        {
+            return a.quote.replace('the ','<b> the </b> ')
+        }
+        else if(a.quote.includes('The '))
+        {
+            return a.quote.replace('The ','<b> The </b> ')
+        }
+        else{
+            return a.quote;
+        }
+    });
+    const listA = document.getElementById('elsoFeladat');
+    listA.innerHTML = `
+    <ol id='szerzok'>
+    </ol>
+    `
+    stringtomb.forEach(a=>{
+        document.getElementById('szerzok').innerHTML += `
+        <li>${a}</li>
+        `
+    });
 
+}
+function hosszGombFuggveny()
+{
+    const hossz = hosszFeladat3.map(a=>a.quote.length).join(', ');
+    const listA = document.getElementById('elsoFeladat');
+    listA.innerHTML = `
+     ${hossz}
+    ` 
+}
+function darabFuggveny()
+{
+    const gombLetrehoz = getElementById('gomb');
+    const userInput = gombLetrehoz.createElement('input');
+    gombLetrehoz.appendChild(userInput);
 }
 function osszidezet()
 {
