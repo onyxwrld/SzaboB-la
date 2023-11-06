@@ -64,9 +64,10 @@ function hosszGombFuggveny()
 }
 function darabFuggveny()
 {
-    const gombLetrehoz = getElementById('gomb');
-    const userInput = gombLetrehoz.createElement('input');
-    gombLetrehoz.appendChild(userInput);
+    const inputGomb = document.getElementById('inputID').value;
+    const output = document.getElementById('outputID');
+    const szam = darabszamFeladat4.filter(a=>a.author === inputGomb).length;
+    output.value = szam;
 }
 function osszidezet()
 {
